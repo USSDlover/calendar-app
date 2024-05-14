@@ -68,7 +68,11 @@ export class FormDialog implements OnInit {
   }
 
   private initBookedAppointment(): void {
-    this.bookedAppointment = this.data.appointment;
+    if (this.data?.appointment) {
+      this.bookedAppointment = this.data.appointment;
+      this.form.controls.title.setValue(this.data.appointment!.title);
+      this.form.controls.description.setValue(this.data.appointment!.description || '');
+    }
   }
 
   onFormSubmit(): void {

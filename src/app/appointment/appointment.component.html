@@ -3,6 +3,7 @@
   [selectedDate]="service.selectedDate()"
   (selectedDateChange)="onDateSelected($event)"
   (createAppointment)="onCreateAppointment($event)"
-  [appointments]="service.appointments()"
   (deleteAppointment)="onDeleteAppointment($event)"
+  (updateAppointment)="onUpdateAppointment($event)"
+  [appointments]="service.appointments()"
 />

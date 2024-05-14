@@ -24,6 +24,7 @@ export class CalendarComponent implements OnInit {
   createAppointment = output<CreateAppointment>();
   appointments = input<Appointment[]>([]);
   deleteAppointment = output<string>();
+  updateAppointment = output<Appointment>();
 
   constructor(
     private matDialog: MatDialog
@@ -45,7 +46,7 @@ export class CalendarComponent implements OnInit {
     });
     dialogRef
       .afterClosed()
-      .subscribe((res: Partial<CreateAppointment> & { delete?: boolean }) => {
+      .subscribe((res: Partial<CreateAppointment> & { delete?: boolean, update?: boolean }) => {
         if (res?.title) {
           this.createAppointment.emit({
             title: res.title,
@@ -56,6 +57,15 @@ export class CalendarComponent implements OnInit {
         }
         if (res?.delete && timeSlot.appointment) {
           this.deleteAppointment.emit(timeSlot.appointment.id);
+        }
+        if (res?.update && res?.title) {
+          this.updateAppointment.emit({
+            id: timeSlot.appointment!.id,
+            title: res.title,
+            description: res.description,
+            hour: timeSlot.hour,
+            date: this.selectedDate()!
+          });
         }
       });
   }

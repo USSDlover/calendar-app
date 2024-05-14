@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AppointmentService } from './services/appointment.service';
 import { CreateAppointment } from './types/create-appointment';
+import { Appointment } from './types/appointment';
 
 @Component({
   selector: 'app-appointment',
@@ -29,5 +30,9 @@ export class AppointmentComponent {
 
   onDeleteAppointment(id: string) {
     this.service.delete(id);
+  }
+
+  onUpdateAppointment(appointment: Appointment) {
+    this.service.update(appointment);
   }
 }

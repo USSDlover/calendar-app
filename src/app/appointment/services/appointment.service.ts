@@ -19,4 +19,14 @@ export class AppointmentService {
   delete(id: string): void {
     this.appointments.update(state => (state.filter(ap => ap.id !== id)));
   }
+
+  update(appointment: Appointment): void {
+    this.appointments.update(state => (state.map(ap => {
+      if (ap.id === appointment.id) {
+        return appointment;
+      } else {
+        return ap;
+      }
+    })));
+  }
 }
