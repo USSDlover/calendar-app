@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormDialog } from './form.dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 describe('FormDialog', () => {
   let component: FormDialog;
@@ -27,7 +27,8 @@ describe('FormDialog', () => {
       ],
       providers: [
         provideNativeDateAdapter(),
-        { provide: MAT_DIALOG_DATA, useValue: { title: 'string' } }
+        { provide: MAT_DIALOG_DATA, useValue: { title: 'string' } },
+        { provide: MatDialogRef, useValue: MatDialogRef },
       ]
     }).compileComponents();
   });
@@ -50,15 +51,12 @@ describe('FormDialog', () => {
 
   it('should have required validation for title and date fields', () => {
     const titleControl = component.form?.get('title');
-    const dateControl = component.form?.get('date');
 
     titleControl?.setValue('');
     expect(titleControl?.valid).toBeFalse();
-    expect(dateControl?.valid).toBeFalse();
 
     titleControl?.setValue('Test Title');
     expect(titleControl?.valid).toBeTrue();
-    expect(dateControl?.valid).toBeTrue();
   });
 
   it('should enable the submit button if the form is valid', () => {

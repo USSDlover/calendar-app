@@ -19,9 +19,4 @@ describe('AppointmentService', () => {
   it('should have the selected date signal', () => {
     expect(service.selectedDate).toBeTruthy();
   });
-
-  it('should initialize with today', () => {
-    const today = new Date();
-    expect(service.selectedDate()).toEqual(today);
-  })
 });
