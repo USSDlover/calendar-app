@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormDialog } from '../form/form.dialog';
 import { CreateAppointment } from '../../types/create-appointment';
 import { Appointment } from '../../types/appointment';
+import moment from 'moment';
 
 @Component({
   selector: 'app-calendar',
@@ -17,15 +18,19 @@ import { Appointment } from '../../types/appointment';
   styleUrl: './calendar.component.scss',
 })
 export class CalendarComponent {
-  selectedDate = model<Date | null>(new Date());
-  hours?: number[];
+  selectedDate = model<Date | null>(null);
+  timeSlots?: {
+    hour: number;
+    appointment?: Appointment;
+  }[];
   createAppointment = output<CreateAppointment>();
   appointments = input<Appointment[]>([]);
 
   constructor(
     private matDialog: MatDialog
   ) {
-    this.hours = Array.from({ length: 24 }, (_, i) => i);
+    this.timeSlots = Array.from({ length: 24 }, (_, i) => ({ hour: i }));
+    effect(() => this.highlightAppointments());
   }
 
   onTimeSlotSelect(hour: number): void {
@@ -47,5 +52,23 @@ export class CalendarComponent {
           });
         }
       });
+  }
+
+  highlightAppointments(): void {
+    this.appointments().forEach((appointment: Appointment) => {
+      const appointmentDate = moment(appointment.date);
+      const selectedDate = moment(this.selectedDate());
+      if (appointment.date) {
+        if (this.timeSlots) {
+          this.timeSlots.forEach((slot) => {
+            if (slot.hour === appointment.hour && appointmentDate.isSame(selectedDate)) {
+              slot.appointment = appointment;
+            } else {
+              slot.appointment = undefined;
+            }
+          });
+        }
+      }
+    });
   }
 }
