@@ -3,12 +3,13 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { AppointmentService } from './services/appointment.service';
 import { CreateAppointment } from './types/create-appointment';
 import { Appointment } from './types/appointment';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-appointment',
   standalone: true,
   templateUrl: './appointment.component.html',
-  imports: [ CalendarComponent ],
+  imports: [CalendarComponent, AsyncPipe],
   styleUrl: './appointment.component.scss',
   providers: [AppointmentService]
 })
@@ -20,7 +21,7 @@ export class AppointmentComponent {
 
   onDateSelected(date: Date | null) {
     if (date) {
-      this.service.selectedDate.set(date);
+      this.service.setSelectedDate(date);
     }
   }
 
