@@ -56,6 +56,9 @@ export class CalendarComponent implements OnInit {
 
   onAppointmentDropped(event: CdkDragDrop<Appointment>) {
     if (event.previousIndex !== event.currentIndex && this.timeSlots && this.timeSlots[event.previousIndex].appointment) {
+      // Can not put into slot with appointment
+      if (this.timeSlots[event.currentIndex].appointment) return;
+
       this.timeSlots[event.currentIndex].appointment = this.timeSlots[event.previousIndex].appointment;
       this.timeSlots[event.previousIndex].appointment = undefined;
 
@@ -66,7 +69,7 @@ export class CalendarComponent implements OnInit {
         description: newTimeSlot.appointment!.description,
         hour: newTimeSlot.hour,
         date: newTimeSlot.appointment!.date
-      })
+      });
     }
   }
 
