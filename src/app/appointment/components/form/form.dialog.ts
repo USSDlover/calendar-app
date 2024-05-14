@@ -15,6 +15,7 @@ import {
 import { FormDialogData } from '../../types/form-dialog-data';
 import { DatePipe } from '@angular/common';
 import { Appointment } from '../../types/appointment';
+import { FormDialogFlags } from '../../types/form-dialog-flags';
 
 @Component({
   selector: 'app-form',
@@ -46,7 +47,7 @@ export class FormDialog implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: FormDialogData,
-    public dialogRef: MatDialogRef<FormDialog>
+    public dialogRef: MatDialogRef<FormDialog, FormDialogFlags>
   ) {}
 
   ngOnInit(): void {
@@ -77,7 +78,8 @@ export class FormDialog implements OnInit {
 
   onFormSubmit(): void {
     this.dialogRef.close({
-      ...this.form.value
+      ...this.form.value,
+      update: !!this.bookedAppointment
     });
   }
 

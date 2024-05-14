@@ -10,6 +10,7 @@ import { Appointment } from '../../types/appointment';
 import moment from 'moment';
 import { TimeSlot } from '../../types/time-slot';
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
+import { FormDialogFlags } from '../../types/form-dialog-flags';
 
 @Component({
   selector: 'app-calendar',
@@ -73,21 +74,21 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  private onAppointmentDialogResult(timeSlot: TimeSlot, res: Partial<CreateAppointment> & { delete?: boolean, update?: boolean }): void {
-    if (res?.title) {
-      this.createAppointment.emit({
+  private onAppointmentDialogResult(timeSlot: TimeSlot, res: Partial<CreateAppointment> & FormDialogFlags): void {
+    if (res?.update && res?.title) {
+      this.updateAppointment.emit({
+        id: timeSlot.appointment!.id,
         title: res.title,
         description: res.description,
         hour: timeSlot.hour,
         date: this.selectedDate()!
       });
     }
-    if (res?.delete && timeSlot.appointment) {
+    else if (res?.delete && timeSlot.appointment) {
       this.deleteAppointment.emit(timeSlot.appointment.id);
     }
-    if (res?.update && res?.title) {
-      this.updateAppointment.emit({
-        id: timeSlot.appointment!.id,
+    else if (res?.title) {
+      this.createAppointment.emit({
         title: res.title,
         description: res.description,
         hour: timeSlot.hour,
