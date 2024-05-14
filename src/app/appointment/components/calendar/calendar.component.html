@@ -1,4 +1,15 @@
-<mat-card class="calendar">
-  <mat-calendar [(selected)]="selected" />
-</mat-card>
-
+<div class="calendar-container">
+  <mat-card class="calendar">
+    <mat-calendar [(selected)]="selectedDate" />
+  </mat-card>
+  <div class="agenda">
+    <h2>{{ selectedDate | date: 'EEEE, MMMM d, yyyy' }}</h2>
+    <div class="time-slots">
+      @for (hour of hours; track hour ) {
+        <div class="time-slot">
+          {{ hour }}:00
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -7,8 +7,9 @@ Simple Calendar application
 - [x] Initiate the Angular `ng new calendar-app`
 - [x] Install Angular Material `ng add @angular/material`
 - [x] ESLint `ng add @angular-eslint/schematics`
-- [x] Create an Appointment
-- [ ] Calendar view
+- [x] Create an Appointment form
+- [x] Calendar view
+- [ ] Calendar service
 - [ ] Delete the appointment
 - [ ] Move the appointment
 - [ ] Appointment Drag & Drop
