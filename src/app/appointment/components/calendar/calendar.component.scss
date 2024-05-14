@@ -1,0 +1,42 @@
+.calendar-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+mat-card {
+  width: 250px;
+  max-height: 350px;
+  margin-bottom: 20px;
+}
+
+.agenda {
+  width: 100%;
+}
+
+.time-slots {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.time-slot {
+  width: 100%;
+  padding: 10px 10px;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  outline: none;
+  background-color: rgba(0,0,0,0);
+  text-align: start;
+
+  &:has(.appointment-detail) {
+    background-color: #3f51b5;
+    color: #fdfdfd;
+  }
+
+  .appointment-detail {
+    padding-inline-start: 0.75rem;
+    text-transform: capitalize;
+  }
+}

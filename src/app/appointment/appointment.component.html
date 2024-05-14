@@ -1,0 +1,9 @@
+<app-calendar
+  ngSkipHydration
+  [selectedDate]="service.selectedDate() | async"
+  (selectedDateChange)="onDateSelected($event)"
+  (createAppointment)="onCreateAppointment($event)"
+  (deleteAppointment)="onDeleteAppointment($event)"
+  (updateAppointment)="onUpdateAppointment($event)"
+  [appointments]="service.appointments()"
+/>

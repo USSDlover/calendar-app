@@ -1,0 +1,22 @@
+@if (selectedDate && selectedHour) {
+  <h3 mat-dialog-title>Set appointment at {{ selectedDate | date: 'EEEE, MMMM d, yyyy' }} and {{selectedHour}}:00</h3>
+}
+<mat-dialog-content>
+  <form (ngSubmit)="onFormSubmit()" [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="4" cols="2" formControlName="description"></textarea>
+    </mat-form-field>
+    <button type="submit" aria-hidden="true"></button>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button color="primary" [disabled]="form.invalid" (click)="onFormSubmit()" mat-raised-button type="submit">Submit</button>
+  @if (bookedAppointment) {
+    <button color="accent" (click)="onDelete()" mat-flat-button>Delete</button>
+  }
+</mat-dialog-actions>
