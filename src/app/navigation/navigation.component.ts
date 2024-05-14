@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatToolbar, MatToolbarModule, MatToolbarRow } from '@angular/material/toolbar';
+import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -11,10 +11,9 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ],
   template: `
-    <mat-toolbar>
+    <mat-toolbar color="primary" class="mat-elevation-z3">
       <mat-toolbar-row>
         <h3>Calendar App</h3>
-        <button routerLink="appointment">Appointment</button>
       </mat-toolbar-row>
     </mat-toolbar>
   `,

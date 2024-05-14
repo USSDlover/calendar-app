@@ -8,7 +8,14 @@ import { NavigationComponent } from './navigation/navigation.component';
   imports: [RouterOutlet, NavigationComponent],
   template: `
     <app-navigation />
-    <router-outlet />
+    <div class="content">
+      <router-outlet />
+    </div>
+  `,
+  styles: `
+    .content {
+      padding-top: 1.5rem;
+    }
   `
 })
 export class AppComponent {}

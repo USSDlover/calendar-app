@@ -19,4 +19,4 @@ Simple Calendar application
 - [x] Render calendar dates and appointments (calendar view)
 - [x] Angular forms with value changes, validators, etc
 - [x] Functioning between dates
-- [ ] Replace appointments on drop
+- [-] Replace appointments on drop
