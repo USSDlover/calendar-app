@@ -3,7 +3,7 @@
     <mat-calendar [(selected)]="selectedDate" />
   </mat-card>
   <div class="agenda">
-    <h2>{{ selectedDate | date: 'EEEE, MMMM d, yyyy' }}</h2>
+    <h2>{{ selectedDate() | date: 'EEEE, MMMM d, yyyy' }}</h2>
     <div class="time-slots">
       @for (hour of hours; track hour ) {
         <div class="time-slot">

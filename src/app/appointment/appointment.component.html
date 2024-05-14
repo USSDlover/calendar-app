@@ -1,1 +1,5 @@
-<app-calendar ngSkipHydration  />
+<app-calendar
+  ngSkipHydration
+  [selectedDate]="service.selectedDate()"
+  (selectedDateChange)="onDateSelected($event)"
+/>

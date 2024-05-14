@@ -9,7 +9,8 @@ Simple Calendar application
 - [x] ESLint `ng add @angular-eslint/schematics`
 - [x] Create an Appointment form
 - [x] Calendar view
-- [ ] Calendar service
+- [x] Calendar service
+- [ ] Create an appointment
 - [ ] Delete the appointment
 - [ ] Move the appointment
 - [ ] Appointment Drag & Drop
