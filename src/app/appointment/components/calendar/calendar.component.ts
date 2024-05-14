@@ -101,8 +101,10 @@ export class CalendarComponent implements OnInit {
         if (appointment.date) {
           if (this.timeSlots) {
             this.timeSlots.forEach((slot) => {
-              if (slot.hour === appointment.hour && appointmentDate.isSame(selectedDate)) {
-                slot.appointment = appointment;
+              if (appointmentDate.isSame(selectedDate)) {
+                if (slot.hour === appointment.hour) {
+                  slot.appointment = appointment;
+                }
               } else {
                 slot.appointment = undefined;
               }
