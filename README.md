@@ -12,7 +12,7 @@ Simple Calendar application
 - [x] Calendar service
 - [x] Create an appointment
 - [x] Show the appointment on calendar
-- [ ] Delete the appointment
+- [x] Delete the appointment
 - [ ] Move the appointment
 - [ ] Appointment Drag & Drop
 - [ ] Render calendar dates and appointments (calendar view)

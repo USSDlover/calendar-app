@@ -26,4 +26,8 @@ export class AppointmentComponent {
   onCreateAppointment(appointment: CreateAppointment) {
     this.service.create(appointment);
   }
+
+  onDeleteAppointment(id: string) {
+    this.service.delete(id);
+  }
 }

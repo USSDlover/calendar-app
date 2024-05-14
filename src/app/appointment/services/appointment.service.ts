@@ -15,4 +15,8 @@ export class AppointmentService {
       ...appointment
     })));
   }
+
+  delete(id: string): void {
+    this.appointments.update(state => (state.filter(ap => ap.id !== id)));
+  }
 }

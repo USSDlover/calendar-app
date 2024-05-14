@@ -16,4 +16,7 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button color="primary" [disabled]="form.invalid" (click)="onFormSubmit()" mat-raised-button type="submit">Submit</button>
+  @if (bookedAppointment) {
+    <button color="accent" (click)="onDelete()" mat-flat-button>Delete</button>
+  }
 </mat-dialog-actions>

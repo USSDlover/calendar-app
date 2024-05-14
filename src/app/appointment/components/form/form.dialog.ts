@@ -14,6 +14,7 @@ import {
 } from '@angular/material/dialog';
 import { FormDialogData } from '../../types/form-dialog-data';
 import { DatePipe } from '@angular/common';
+import { Appointment } from '../../types/appointment';
 
 @Component({
   selector: 'app-form',
@@ -41,6 +42,7 @@ export class FormDialog implements OnInit {
 
   selectedDate?: Date;
   selectedHour?: number;
+  bookedAppointment?: Appointment;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: FormDialogData,
@@ -50,6 +52,7 @@ export class FormDialog implements OnInit {
   ngOnInit(): void {
     this.initSelectedDate();
     this.initSelectedHour();
+    this.initBookedAppointment();
   }
 
   private initSelectedDate(): void {
@@ -64,10 +67,18 @@ export class FormDialog implements OnInit {
     }
   }
 
+  private initBookedAppointment(): void {
+    this.bookedAppointment = this.data.appointment;
+  }
+
   onFormSubmit(): void {
     this.dialogRef.close({
       ...this.form.value
     });
+  }
+
+  onDelete(): void {
+    this.dialogRef.close({ delete: true });
   }
 
 
