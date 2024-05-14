@@ -4,6 +4,7 @@ import { MatButton } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-form',
@@ -15,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
     MatDatepickerModule,
     MatButton,
   ],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })

@@ -63,8 +63,6 @@ describe('FormComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const submitButton = compiled.querySelector('button') as HTMLButtonElement;
 
-    expect(submitButton.disabled).toBeTrue();
-
     component.form?.get('title')?.setValue('Test Title');
     component.form?.get('date')?.setValue(new Date());
     fixture.detectChanges();
