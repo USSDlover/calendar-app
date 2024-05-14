@@ -2,21 +2,18 @@
 
 Simple Calendar application
 
-## Todo
+## Development server
 
-- [x] Initiate the Angular `ng new calendar-app`
-- [x] Install Angular Material `ng add @angular/material`
-- [x] ESLint `ng add @angular-eslint/schematics`
-- [x] Create an Appointment form
-- [x] Calendar view
-- [x] Calendar service
-- [x] Create an appointment
-- [x] Show the appointment on calendar
-- [x] Delete the appointment
-- [x] Update the appointment
-- [x] Move the appointment
-- [x] Appointment Drag & Drop
-- [x] Render calendar dates and appointments (calendar view)
-- [x] Angular forms with value changes, validators, etc
-- [x] Functioning between dates
-- [-] Replace appointments on drop
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
