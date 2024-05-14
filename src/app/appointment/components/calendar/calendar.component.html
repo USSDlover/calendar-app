@@ -4,9 +4,9 @@
   </mat-card>
   <div class="agenda">
     <h2>{{ selectedDate() | date: 'EEEE, MMMM d, yyyy' }}</h2>
-    <div class="time-slots">
+    <div class="time-slots" cdkDropList (cdkDropListDropped)="onAppointmentDropped($event)">
       @for (timeSlot of timeSlots; track timeSlot.hour ) {
-        <button class="time-slot" (click)="onTimeSlotSelect(timeSlot)">
+        <button class="time-slot" (click)="onTimeSlotSelect(timeSlot)" cdkDrag>
           {{ timeSlot.hour }}:00
           @if (timeSlot.appointment) {
             <span class="appointment-detail">{{timeSlot.appointment.title}}</span>

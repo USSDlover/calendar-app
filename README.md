@@ -14,7 +14,7 @@ Simple Calendar application
 - [x] Show the appointment on calendar
 - [x] Delete the appointment
 - [x] Update the appointment
-- [-] Move the appointment
-- [ ] Appointment Drag & Drop
-- [ ] Render calendar dates and appointments (calendar view)
-- [ ] Angular forms with value changes, validators, etc
+- [x] Move the appointment
+- [x] Appointment Drag & Drop
+- [x] Render calendar dates and appointments (calendar view)
+- [x] Angular forms with value changes, validators, etc
