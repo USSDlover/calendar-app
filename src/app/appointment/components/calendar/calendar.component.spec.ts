@@ -34,4 +34,15 @@ describe('CalendarComponent', () => {
 
     expect(agenda).toBeTruthy();
   });
+
+  it('should open the create appointment dialog on hour time slot click', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const timeSlot = compiled.querySelector('.time-slot') as HTMLDivElement;
+
+    timeSlot.click();
+    fixture.detectChanges();
+
+    const dialog = document.querySelector('.mat-mdc-dialog-container');
+    expect(dialog).toBeTruthy();
+  });
 });

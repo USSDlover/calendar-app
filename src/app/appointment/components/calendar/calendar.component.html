@@ -6,9 +6,9 @@
     <h2>{{ selectedDate() | date: 'EEEE, MMMM d, yyyy' }}</h2>
     <div class="time-slots">
       @for (hour of hours; track hour ) {
-        <div class="time-slot">
+        <button class="time-slot" (click)="onTimeSlotSelect(hour)">
           {{ hour }}:00
-        </div>
+        </button>
       }
     </div>
   </div>
