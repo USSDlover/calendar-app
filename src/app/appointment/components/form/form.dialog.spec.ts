@@ -4,31 +4,36 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormComponent } from './form.component';
+import { FormDialog } from './form.dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
-describe('FormComponent', () => {
-  let component: FormComponent;
-  let fixture: ComponentFixture<FormComponent>;
+describe('FormDialog', () => {
+  let component: FormDialog;
+  let fixture: ComponentFixture<FormDialog>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        FormComponent,
+        FormDialog,
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
         MatDatepickerModule,
         MatButtonModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatDialogModule
       ],
-      providers: [provideNativeDateAdapter()]
+      providers: [
+        provideNativeDateAdapter(),
+        { provide: MAT_DIALOG_DATA, useValue: { title: 'string' } }
+      ]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormComponent);
+    fixture = TestBed.createComponent(FormDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -40,7 +45,6 @@ describe('FormComponent', () => {
   it('should initialize the form with empty fields', () => {
     expect(component.form).toBeDefined();
     expect(component.form?.get('title')?.value).toBe('');
-    expect(component.form?.get('date')?.value).toBe('');
     expect(component.form?.get('description')?.value).toBe('');
   });
 
@@ -49,12 +53,10 @@ describe('FormComponent', () => {
     const dateControl = component.form?.get('date');
 
     titleControl?.setValue('');
-    dateControl?.setValue('');
     expect(titleControl?.valid).toBeFalse();
     expect(dateControl?.valid).toBeFalse();
 
     titleControl?.setValue('Test Title');
-    dateControl?.setValue(new Date());
     expect(titleControl?.valid).toBeTrue();
     expect(dateControl?.valid).toBeTrue();
   });
@@ -64,7 +66,6 @@ describe('FormComponent', () => {
     const submitButton = compiled.querySelector('button') as HTMLButtonElement;
 
     component.form?.get('title')?.setValue('Test Title');
-    component.form?.get('date')?.setValue(new Date());
     fixture.detectChanges();
 
     expect(submitButton.disabled).toBeFalse();
@@ -74,7 +75,6 @@ describe('FormComponent', () => {
     spyOn(component, 'onFormSubmit');
 
     component.form?.get('title')?.setValue('Test Title');
-    component.form?.get('date')?.setValue(new Date());
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;

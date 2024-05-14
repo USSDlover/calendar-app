@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AppointmentService } from './services/appointment.service';
+import { CreateAppointment } from './types/create-appointment';
 
 @Component({
   selector: 'app-appointment',
@@ -20,5 +21,9 @@ export class AppointmentComponent {
     if (date) {
       this.service.selectedDate.set(date);
     }
+  }
+
+  onCreateAppointment(appointment: CreateAppointment) {
+    this.service.create(appointment);
   }
 }
