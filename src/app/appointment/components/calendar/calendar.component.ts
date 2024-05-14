@@ -21,11 +21,13 @@ import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 })
 export class CalendarComponent implements OnInit {
   selectedDate = model<Date | null>(null);
-  timeSlots?: TimeSlot[];
-  createAppointment = output<CreateAppointment>();
   appointments = input<Appointment[]>([]);
+
+  createAppointment = output<CreateAppointment>();
   deleteAppointment = output<string>();
   updateAppointment = output<Appointment>();
+
+  timeSlots?: TimeSlot[];
 
   constructor(
     private matDialog: MatDialog
